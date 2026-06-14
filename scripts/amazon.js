@@ -1,3 +1,24 @@
+import {cart} from '../data/cart.js'
+/* 
+Here we have use module for preventing he naming conflict
+as if the variable already present in amazon.js and cart.js
+
+IF THE SAME VARIABLE IS PRESENT IN 2 FILES IT CREATES NAMING CONFILCT BETWEEN THEM,
+THATS WHY WE USE MODULE.
+
+## CRRATING A MODULE
+1-> CREATE A FILE.
+2-> DONT LOAD FILE  IN <SCRIPT> TAG. 
+
+## GET A VARIABLE OUT OF A FILE IN MODULE HAS THREE STEPS :
+1-ADD MODULE IN SCRIPT TAG OF FILE NAME  WHERE TO U HAVE TO USE THAT VARIABLE .
+2-EXPORT THAT VAIRABLE means giing permission to be get used.
+3-now after exporting the variable , u can import th variable in thw file u have to use it.
+
+by import cammand u can also change the name of variable i.e,
+"import {cart as mycart} -> now cart name change to mycart".
+ */
+
 let productHTML='';
 products.forEach((product) =>{
           productHTML +=`
@@ -50,7 +71,7 @@ products.forEach((product) =>{
             Add to Cart
           </button>
         </div>
-  `; 
+  `;  
 });
 
 document.querySelector('.js-product-grid').innerHTML=productHTML;
