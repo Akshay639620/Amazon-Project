@@ -1,4 +1,5 @@
 import {cart} from '../data/cart.js'
+import {products} from '../data/products.js'
 /* 
 Here we have use module for preventing he naming conflict
 as if the variable already present in amazon.js and cart.js
