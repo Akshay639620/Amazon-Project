@@ -1,4 +1,4 @@
-import {cart} from '../data/cart.js'
+import { cart, addToCart } from '../data/cart.js'
 import {products} from '../data/products.js'
 /* 
 Here we have use module for preventing he naming conflict
@@ -75,35 +75,31 @@ products.forEach((product) =>{
   `;  
 });
 
-document.querySelector('.js-product-grid').innerHTML=productHTML;
+document.querySelector('.js-product-grid')
+.innerHTML=productHTML;
+
+
+
+function updateCartQuantity(){
+  let totalCartQuantity = 0;
+  cart.forEach((cartItem) => {
+    totalCartQuantity += cartItem.quantity;
+  });
+
+  document.querySelector('.js-cart-quantity')
+    .innerHTML = totalCartQuantity;
+
+  console.log(totalCartQuantity);
+  console.log(cart);
+}
 document.querySelectorAll('.js-addtocart').forEach((button) =>{
   button.addEventListener('click',()=>{
     const productId=button.dataset.productId;
-    let matchingItem;
-    cart.forEach((item) =>{
-      if(productId === item.productId){
-        matchingItem = item;
-      }
-    });
-    if(matchingItem){
-      matchingItem.quantity += 1;
-    }
-    else{
-      cart.push({
-        productId: productId,
-        quantity: 1
-      });
-    }
 
-    let totalCartQuantity=0;
-    cart.forEach((item)=>{
-      totalCartQuantity += item.quantity;
-    });
+    addToCart(productId);
+    updateCartQuantity();
 
-    document.querySelector('.js-cart-quantity')
-    .innerHTML = totalCartQuantity;
 
-    console.log(totalCartQuantity);
-    console.log(cart);
+
   });
 });
