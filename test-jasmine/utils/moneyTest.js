@@ -12,4 +12,3 @@ describe('test suite : formatCurrency',() => {
     expect(formatCurrency(2000.5)).toEqual('20.01');
   });
 });
- 
