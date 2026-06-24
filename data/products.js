@@ -84,7 +84,8 @@ obj3.method();
 */
 
 export function loadProductsFetch(){
-  const promise = fetch('https://supersimplebackend.dev/products').then((response) =>{
+  const promise = fetch('https://supersimplebackend.dev/products')
+  .then((response) =>{
     return response.json();
   }).then((productData) =>{
     products = productData.map((productDetails) => {
@@ -94,9 +95,12 @@ export function loadProductsFetch(){
       return new Product(productDetails);
     });
     console.log('load products');
+  }).catch((error) => {
+    console.log('unexpected error.Please try agian later');
   });
   return promise;
 }
+
 
 // loadProductFetch().then(() => {
 //   console.log('next step');
@@ -118,9 +122,17 @@ export function loadProducts(func){
     func();
   });
 
+  xhr.addEventListener('error', (error) => {
+    console.log('unexpected error.Please try agian later');
+  });
+
   xhr.open('GET','https://supersimplebackend.dev/products');
   xhr.send();
 } 
+
+
+
+
 
 
 
